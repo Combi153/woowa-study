@@ -1,5 +1,8 @@
 package precourse.week1.problem4.domain;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Word {
 
     private static final int START_OF_RANGE = 1;
@@ -19,5 +22,15 @@ public class Word {
 
     private boolean isOutOfRange(int length) {
         return length < START_OF_RANGE || length > END_OF_RANGE;
+    }
+
+    public List<Integer> getAlphabets() {
+        return makeAlphabets(this.word);
+    }
+
+    private List<Integer> makeAlphabets(String word) {
+        return word.chars()
+                .boxed()
+                .collect(Collectors.toList());
     }
 }
