@@ -20,17 +20,30 @@ public class Word {
         }
     }
 
+    private List<Character> makeAlphabets(String word) {
+        return word.chars()
+                .mapToObj(alphabet -> (char)alphabet)
+                .collect(Collectors.toList());
+    }
+
     private boolean isOutOfRange(int length) {
         return length < START_OF_RANGE || length > END_OF_RANGE;
     }
 
-    public List<Integer> getAlphabets() {
-        return makeAlphabets(this.word);
+    public Word changeBy(Translator translator, Range range) {
+        List<Character> alphabets = makeAlphabets(this.word);
+        for (int i = 0; i < alphabets.size(); i++) {
+            Character alphabet = alphabets.get(i);
+            if (range.contains(alphabet)) {
+                alphabets.set(i, (char) translator.translate(alphabet));
+            }
+        }
+        return new Word(alphabets.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining()));
     }
 
-    private List<Integer> makeAlphabets(String word) {
-        return word.chars()
-                .boxed()
-                .collect(Collectors.toList());
+    public String getWord() {
+        return word;
     }
 }
