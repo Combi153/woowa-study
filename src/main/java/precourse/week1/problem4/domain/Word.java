@@ -33,7 +33,7 @@ public class Word {
     public Word changeBy(Translator translator, Range range) {
         List<Character> alphabets = makeAlphabets(this.word);
         for (int i = 0; i < alphabets.size(); i++) {
-            Character alphabet = alphabets.get(i);
+            int alphabet = alphabets.get(i);
             if (range.contains(alphabet)) {
                 alphabets.set(i, (char) translator.translate(alphabet));
             }
