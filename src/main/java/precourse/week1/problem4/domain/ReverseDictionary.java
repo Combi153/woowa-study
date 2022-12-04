@@ -18,12 +18,12 @@ public class ReverseDictionary {
             if (alphabet >= START_OF_UPPER_CASE && alphabet <= END_OF_UPPER_CASE) {
                 int translatedValue = START_OF_UPPER_CASE + END_OF_UPPER_CASE - alphabet;
                 translatedAlphabets.add((char) translatedValue);
-            }
-            if (alphabet >= START_OF_LOWER_CASE && alphabet <= END_OF_LOWER_CASE) {
+            } else if (alphabet >= START_OF_LOWER_CASE && alphabet <= END_OF_LOWER_CASE) {
                 int translatedValue = START_OF_LOWER_CASE + END_OF_LOWER_CASE - alphabet;
                 translatedAlphabets.add((char) translatedValue);
+            } else {
+                translatedAlphabets.add((char) alphabet);
             }
-            translatedAlphabets.add((char) alphabet);
         }
 
         return translatedAlphabets.stream()
