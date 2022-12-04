@@ -22,7 +22,7 @@ public class Word {
 
     private List<Character> makeAlphabets(String word) {
         return word.chars()
-                .mapToObj(alphabet -> (char)alphabet)
+                .mapToObj(alphabet -> (char) alphabet)
                 .collect(Collectors.toList());
     }
 
@@ -38,9 +38,17 @@ public class Word {
                 alphabets.set(i, (char) translator.translate(alphabet));
             }
         }
-        return new Word(alphabets.stream()
+        return createWord(alphabets);
+    }
+
+    private Word createWord(List<Character> alphabets) {
+        return new Word(makeWord(alphabets));
+    }
+
+    private String makeWord(List<Character> alphabets) {
+        return alphabets.stream()
                 .map(String::valueOf)
-                .collect(Collectors.joining()));
+                .collect(Collectors.joining());
     }
 
     public String getWord() {
