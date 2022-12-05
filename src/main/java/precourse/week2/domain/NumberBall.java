@@ -1,4 +1,4 @@
-package precourse.week2;
+package precourse.week2.domain;
 
 public class NumberBall {
 
