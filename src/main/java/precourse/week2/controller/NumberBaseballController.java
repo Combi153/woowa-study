@@ -1,6 +1,10 @@
 package precourse.week2.controller;
 
-import precourse.week2.domain.*;
+import precourse.week2.domain.system.Command;
+import precourse.week2.domain.game.player.Computer;
+import precourse.week2.domain.game.referee.Decision;
+import precourse.week2.domain.game.ball.NumberBall;
+import precourse.week2.domain.game.referee.Referee;
 import precourse.week2.view.InputView;
 import precourse.week2.view.OutputView;
 
