@@ -23,7 +23,7 @@ public class NumberBall {
     }
 
     private boolean isThreeNumbers(String number) {
-        return number.matches("\\d{3}");
+        return number.matches("[1-9]{3}");
     }
 
     private boolean hasDuplicate(String number) {
