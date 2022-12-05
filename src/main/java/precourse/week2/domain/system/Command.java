@@ -2,6 +2,8 @@ package precourse.week2.domain.system;
 
 public class Command {
 
+    private static final String COMMAND_REGEX = "[12]";
+    private static final String ERROR_MESSAGE = "[ERROR] 게임 커맨드는 1 혹은 2만 입력이 가능합니다.";
     private static final String START = "1";
     private final String command;
 
@@ -15,8 +17,8 @@ public class Command {
     }
 
     private void validate(String command) {
-        if (!command.matches("[12]")) {
-            throw new IllegalArgumentException("[ERROR] 게임 커맨드는 1 혹은 2만 입력이 가능합니다.");
+        if (!command.matches(COMMAND_REGEX)) {
+            throw new IllegalArgumentException(ERROR_MESSAGE);
         }
     }
 
