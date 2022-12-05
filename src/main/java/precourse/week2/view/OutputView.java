@@ -12,17 +12,23 @@ public class OutputView {
     }
 
     public void printDecisionMessage(Decision decision) {
+        String message = makeDecisionMessage(decision);
+        System.out.print(message + "\n");
+    }
+
+    private String makeDecisionMessage(Decision decision) {
         List<String> messages = new ArrayList<>();
+        if (decision.hasNothing()) {
+            messages.add("낫싱");
+            return String.join(" ", messages);
+        }
         if (decision.hasBall()) {
             messages.add(String.format("%s볼", decision.getBall()));
         }
         if (decision.hasStrike()) {
             messages.add(String.format("%s스트라이크", decision.getStrike()));
         }
-        if (decision.hasNothing()) {
-            messages.add("낫싱");
-        }
-        System.out.print(String.join(" ", messages) + "\n");
+        return String.join(" ", messages);
     }
 
     public void printAnswerMessage() {
@@ -30,6 +36,6 @@ public class OutputView {
     }
 
     public void printErrorMessage(String errorMessage) {
-        System.out.print(errorMessage);
+        System.out.print("\n" + errorMessage);
     }
 }
