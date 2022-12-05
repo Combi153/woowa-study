@@ -10,7 +10,7 @@ public class InputView {
     }
 
     private void printNumberBallGuide() {
-        System.out.print("숫자를 입력해주세요 : ");
+        printGuide(Message.INPUT_NUMBER_BALL_GUIDE_MESSAGE);
     }
 
     public String readCommand() {
@@ -19,6 +19,10 @@ public class InputView {
     }
 
     private void printCommandGuide() {
-        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.\n");
+        printGuide(Message.INPUT_COMMAND_GUIDE_MESSAGE);
+    }
+
+    private void printGuide(Message message) {
+        System.out.print(message.getMessage());
     }
 }

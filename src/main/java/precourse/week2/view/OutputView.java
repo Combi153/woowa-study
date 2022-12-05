@@ -8,34 +8,46 @@ import java.util.List;
 public class OutputView {
 
     public void printStartMessage() {
-        System.out.print("숫자 야구 게임을 시작합니다.\n");
+        print(Message.START_MESSAGE);
     }
 
     public void printDecisionMessage(Decision decision) {
         String message = makeDecisionMessage(decision);
-        System.out.print(message + "\n");
+        print(message + Message.NEW_LINE.getMessage());
     }
 
     private String makeDecisionMessage(Decision decision) {
-        List<String> messages = new ArrayList<>();
+        List<String> decisions = new ArrayList<>();
         if (decision.hasNothing()) {
-            messages.add("낫싱");
-            return String.join(" ", messages);
+            decisions.add(Message.NOTHING_DECISION_MESSAGE.getMessage());
+            return makeMessageBy(decisions);
         }
         if (decision.hasBall()) {
-            messages.add(String.format("%s볼", decision.getBall()));
+            decisions.add(Message.BALL_DECISION_MESSAGE.getFormattedMessage(decision.getBall()));
         }
         if (decision.hasStrike()) {
-            messages.add(String.format("%s스트라이크", decision.getStrike()));
+            decisions.add(Message.STRIKE_DECISION_MESSAGE.getFormattedMessage(decision.getStrike()));
         }
-        return String.join(" ", messages);
+        return makeMessageBy(decisions);
+    }
+
+    private String makeMessageBy(List<String> decisions) {
+        return String.join(Message.DECISION_DELIMITER.getMessage(), decisions);
     }
 
     public void printAnswerMessage() {
-        System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        print(Message.ANSWER_MESSAGE);
     }
 
     public void printErrorMessage(String errorMessage) {
-        System.out.print("\n" + errorMessage);
+        print(Message.NEW_LINE.getMessage() + errorMessage);
+    }
+
+    private void print(Message message) {
+        System.out.print(message.getMessage());
+    }
+
+    private void print(String message) {
+        System.out.print(message);
     }
 }
