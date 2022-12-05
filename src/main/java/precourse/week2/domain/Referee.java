@@ -1,27 +1,18 @@
 package precourse.week2.domain;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Referee {
 
-    private final NumberBall computerBall;
-
-    public Referee(NumberBall computerBall) {
-        this.computerBall = computerBall;
-    }
-
-    public Decision createDecision(NumberBall userBall) {
-        int strike = makeStrikeDecision(userBall);
-        int ball = makeBallDecision(userBall);
+    public Decision createDecision(NumberBall userBall, NumberBall computerBall) {
+        int strike = makeStrikeDecision(userBall, computerBall);
+        int ball = makeBallDecision(userBall, computerBall);
         return new Decision(strike, ball);
     }
 
-    private int makeStrikeDecision(NumberBall userBall) {
+    private int makeStrikeDecision(NumberBall userBall, NumberBall computerBall) {
         return computerBall.compareByIndex(userBall);
     }
 
-    private int makeBallDecision(NumberBall userBall) {
+    private int makeBallDecision(NumberBall userBall, NumberBall computerBall) {
         return computerBall.compareByValue(userBall) - computerBall.compareByIndex(userBall);
     }
 }
