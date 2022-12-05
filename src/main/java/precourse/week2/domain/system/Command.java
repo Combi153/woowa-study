@@ -17,9 +17,13 @@ public class Command {
     }
 
     private void validate(String command) {
-        if (!command.matches(COMMAND_REGEX)) {
+        if (isOneOrTwo(command)) {
             throw new IllegalArgumentException(ERROR_MESSAGE);
         }
+    }
+
+    private boolean isOneOrTwo(String command) {
+        return !command.matches(COMMAND_REGEX);
     }
 
     public boolean isStart() {
