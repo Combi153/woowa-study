@@ -1,6 +1,6 @@
 package precourse.week2.view;
 
-import precourse.week2.domain.Decision;
+import precourse.week2.domain.game.referee.Decision;
 
 import java.util.ArrayList;
 import java.util.List;
