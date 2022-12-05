@@ -28,4 +28,8 @@ public class OutputView {
     public void printAnswerMessage() {
         System.out.print("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
+
+    public void printErrorMessage(String errorMessage) {
+        System.out.print(errorMessage);
+    }
 }
