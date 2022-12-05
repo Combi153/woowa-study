@@ -19,6 +19,9 @@ public class OutputView {
         if (decision.hasStrike()) {
             messages.add(String.format("%s스트라이크", decision.getStrike()));
         }
+        if (decision.hasNothing()) {
+            messages.add("낫싱");
+        }
         System.out.print(String.join(" ", messages) + "\n");
     }
 
