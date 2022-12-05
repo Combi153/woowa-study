@@ -1,4 +1,4 @@
-package precourse.week2.domain;
+package precourse.week2.domain.system;
 
 public class Command {
 

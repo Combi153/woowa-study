@@ -1,6 +1,7 @@
-package precourse.week2.domain;
+package precourse.week2.domain.game.player;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import precourse.week2.domain.game.ball.NumberBall;
 
 import java.util.ArrayList;
 import java.util.List;

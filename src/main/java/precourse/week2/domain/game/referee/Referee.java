@@ -1,4 +1,6 @@
-package precourse.week2.domain;
+package precourse.week2.domain.game.referee;
+
+import precourse.week2.domain.game.ball.NumberBall;
 
 public class Referee {
 

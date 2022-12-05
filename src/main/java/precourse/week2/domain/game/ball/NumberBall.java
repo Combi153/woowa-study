@@ -1,4 +1,4 @@
-package precourse.week2.domain;
+package precourse.week2.domain.game.ball;
 
 import java.util.List;
 import java.util.function.Predicate;
