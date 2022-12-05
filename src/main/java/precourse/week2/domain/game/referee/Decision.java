@@ -12,6 +12,14 @@ public class Decision {
         this.ball = ball;
     }
 
+    public int getStrike() {
+        return strike;
+    }
+
+    public int getBall() {
+        return ball;
+    }
+
     public boolean isFullStrike() {
         return strike == FULL_STRIKE;
     }
@@ -26,13 +34,5 @@ public class Decision {
 
     public boolean hasNothing() {
         return ball == NOTHING && strike == NOTHING;
-    }
-
-    public int getStrike() {
-        return strike;
-    }
-
-    public int getBall() {
-        return ball;
     }
 }
