@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
 
-    public String inputNumberBall() {
+    public String readNumberBall() {
         printNumberBallGuide();
         return Console.readLine();
     }
@@ -13,8 +13,7 @@ public class InputView {
         System.out.print("숫자를 입력해주세요 : ");
     }
 
-
-    public String inputCommand() {
+    public String readCommand() {
         printCommandGuide();
         return Console.readLine();
     }
