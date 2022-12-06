@@ -1,4 +1,4 @@
-package precourse.week3;
+package precourse.week3.domain;
 
 import java.util.List;
 
