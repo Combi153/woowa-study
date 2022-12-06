@@ -2,8 +2,8 @@ package precourse.week3.domain;
 
 public class Money {
 
+    private static final int NONE_VALUE = 0;
     private final int money;
-    private static final int NONE_REMAINDER = 0;
 
     public Money(int money) {
         validate(money);
@@ -20,10 +20,21 @@ public class Money {
     }
 
     private boolean isLessThanPrice(int money) {
-        return money < 1000;
+        return money < LottoTicketsStore.LOTTO_PRICE;
     }
 
     private boolean isMultipleOfPrice(int money) {
-        return money % 1000 == NONE_REMAINDER;
+        return money % LottoTicketsStore.LOTTO_PRICE == NONE_VALUE;
+    }
+
+    public int pay(int price) {
+        validatePay(price);
+        return this.money / price;
+    }
+
+    private void validatePay(int price) {
+        if (price == NONE_VALUE) {
+            throw new ArithmeticException("[ERROR] 가격이 0이 될 수 없습니다.");
+        }
     }
 }
