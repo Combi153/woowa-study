@@ -12,20 +12,30 @@ public class InputView {
 
     public int readPayMoney() {
         print(Message.PAY_GUIDE_MESSAGE);
-        String input = Console.readLine();
-        validateBy(input, Validation.FOR_MONEY);
+        String input = readUsing(Validation.FOR_MONEY);
         return toInt(input);
     }
 
     public List<Integer> readWinningNumbers() {
         print(Message.WINNING_NUMBERS_GUIDE_MESSAGE);
-        String input = Console.readLine();
-        validateBy(input, Validation.FOR_WINNING_NUMBERS);
+        String input = readUsing(Validation.FOR_WINNING_NUMBERS);
         return toList(input);
+    }
+
+    public int readBonusNumber() {
+        print(Message.BONUS_NUMBER_GUIDE_MESSAGE);
+        String input = readUsing(Validation.FOR_BONUS_NUMBER);
+        return toInt(input);
     }
 
     private void print(Message message) {
         System.out.print(message.getMessage());
+    }
+
+    private String readUsing(Validation validation) {
+        String input = Console.readLine();
+        validateBy(input, validation);
+        return input;
     }
 
     private void validateBy(String input, Validation validation) {
