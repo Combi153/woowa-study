@@ -2,11 +2,11 @@ package precourse.week3.domain;
 
 import java.util.List;
 
-public class LottoFactory {
+public class LottoMaker {
 
     private final RandomNumberGenerator generator;
 
-    public LottoFactory(RandomNumberGenerator generator) {
+    public LottoMaker(RandomNumberGenerator generator) {
         this.generator = generator;
     }
 
