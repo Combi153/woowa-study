@@ -7,9 +7,9 @@ import java.util.List;
 
 public class LottoNumberGenerator implements RandomNumberGenerator {
 
-    private static final int START_NUMBER_INCLUSIVE = 1;
-    private static final int END_NUMBER_INCLUSIVE = 45;
-    private static final int NUMBER_COUNT = 6;
+    public static final int START_NUMBER_INCLUSIVE = 1;
+    public static final int END_NUMBER_INCLUSIVE = 45;
+    public static final int NUMBER_COUNT = 6;
 
     @Override
     public List<Integer> generate() {
