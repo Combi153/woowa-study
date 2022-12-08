@@ -1,4 +1,6 @@
-package precourse.week3.domain;
+package precourse.week3.domain.lottowinningnumber;
+
+import precourse.week3.domain.winningnumber.LottoNumber;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,14 +12,14 @@ public class LottoWinningNumbersMaker {
         return new LottoWinningNumbers(makeWinningNumbers(numbers), makeWinningNumber(number));
     }
 
-    private List<WinningNumber> makeWinningNumbers(List<Integer> numbers) {
+    private List<LottoNumber> makeWinningNumbers(List<Integer> numbers) {
         return numbers.stream()
-                .map(WinningNumber::new)
+                .map(LottoNumber::new)
                 .collect(Collectors.toList());
     }
 
-    private WinningNumber makeWinningNumber(int number) {
-        return new WinningNumber(number);
+    private LottoNumber makeWinningNumber(int number) {
+        return new LottoNumber(number);
     }
 
     private void validateDuplication(List<Integer> numbers, int number) {
