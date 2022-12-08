@@ -4,7 +4,6 @@ import precourse.week3.domain.LottoResult;
 import precourse.week3.domain.winningnumber.LottoNumber;
 
 import java.util.List;
-import java.util.function.Predicate;
 
 public class LottoWinningNumbers {
 
@@ -16,19 +15,20 @@ public class LottoWinningNumbers {
         this.bonusNumber = bonusNumber;
     }
 
-    public LottoResult grade(List<LottoNumber> numbers) {
+    public LottoResult grade(List<Integer> numbers) {
         int numberOfMatching = countMatchingNumberWith(numbers);
         boolean hasBonusNumber = hasBonusNumber(numbers);
         return new LottoResult(numberOfMatching, hasBonusNumber);
     }
 
-    private boolean hasBonusNumber(List<LottoNumber> numbers) {
-        return numbers.contains(bonusNumber);
+    private boolean hasBonusNumber(List<Integer> numbers) {
+        return bonusNumber.isContained(numbers);
     }
 
-    private int countMatchingNumberWith(List<LottoNumber> numbers) {
+    private int countMatchingNumberWith(List<Integer> numbers) {
         return (int) lottoNumbers.stream()
-                .filter(lottoNumber -> numbers.stream().anyMatch(Predicate.isEqual(lottoNumber)))
+                .filter(lottoNumber -> numbers.stream()
+                        .anyMatch(lottoNumber::isEqualValue))
                 .count();
     }
 }

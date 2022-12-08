@@ -2,6 +2,7 @@ package precourse.week3.domain.winningnumber;
 
 import precourse.week3.domain.lottomaker.LottoNumberGenerator;
 
+import java.util.List;
 import java.util.Objects;
 
 public class LottoNumber {
@@ -38,5 +39,17 @@ public class LottoNumber {
     @Override
     public int hashCode() {
         return Objects.hash(lottoNumber);
+    }
+
+    public String toMessage() {
+        return String.valueOf(lottoNumber);
+    }
+
+    public boolean isContained(List<Integer> numbers) {
+        return numbers.contains(lottoNumber);
+    }
+
+    public boolean isEqualValue(int number) {
+        return lottoNumber == number;
     }
 }
