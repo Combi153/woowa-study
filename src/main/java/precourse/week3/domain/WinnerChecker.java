@@ -13,8 +13,8 @@ public class WinnerChecker {
         this.lottoWinningNumbers = lottoWinningNumbers;
     }
 
-    public RankingTable check(LottoTickets lottoTickets) {
-        return new RankingTable(makeLottoResults(lottoTickets));
+    public LottoResults check(LottoTickets lottoTickets) {
+        return new LottoResults(makeLottoResults(lottoTickets));
     }
 
     private List<LottoResult> makeLottoResults(LottoTickets lottoTickets) {

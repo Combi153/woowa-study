@@ -1,4 +1,4 @@
-package precourse.week3.domain;
+package precourse.week3.domain.lottomaker;
 
 import camp.nextstep.edu.missionutils.Randoms;
 

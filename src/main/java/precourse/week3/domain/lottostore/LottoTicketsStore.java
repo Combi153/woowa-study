@@ -1,4 +1,9 @@
-package precourse.week3.domain;
+package precourse.week3.domain.lottostore;
+
+import precourse.week3.domain.lotto.Lotto;
+import precourse.week3.domain.lottomaker.LottoMaker;
+import precourse.week3.domain.lottoticket.LottoTickets;
+import precourse.week3.domain.money.Money;
 
 import java.util.ArrayList;
 import java.util.List;

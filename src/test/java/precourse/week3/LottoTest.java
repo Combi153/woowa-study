@@ -2,7 +2,7 @@ package precourse.week3;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import precourse.week3.domain.Lotto;
+import precourse.week3.domain.lotto.Lotto;
 
 import java.util.List;
 

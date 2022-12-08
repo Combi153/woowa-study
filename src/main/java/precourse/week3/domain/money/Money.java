@@ -1,4 +1,6 @@
-package precourse.week3.domain;
+package precourse.week3.domain.money;
+
+import precourse.week3.domain.lottostore.LottoTicketsStore;
 
 public class Money {
 
