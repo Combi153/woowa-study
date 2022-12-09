@@ -10,7 +10,7 @@ public class InputView {
 
     private static final String WINNING_NUMBERS_DELIMITER = ",";
 
-    public int readPayMoney() {
+    public int readPayment() {
         print(Message.PAY_GUIDE_MESSAGE);
         String input = readUsing(Validation.FOR_MONEY);
         return toInt(input);
@@ -29,7 +29,8 @@ public class InputView {
     }
 
     private void print(Message message) {
-        System.out.print(message.getMessage());
+        OutputView outputView = new OutputView();
+        outputView.print(message.getMessage());
     }
 
     private String readUsing(Validation validation) {
