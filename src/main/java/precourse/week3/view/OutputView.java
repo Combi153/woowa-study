@@ -1,7 +1,6 @@
 package precourse.week3.view;
 
 import precourse.week3.domain.Ranking;
-import precourse.week3.domain.lottoticket.LottoTickets;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -11,9 +10,9 @@ import java.util.stream.Collectors;
 
 public class OutputView {
 
-    public void printLottoTickets(LottoTickets lottoTickets) {
-        print(String.format(Message.PAYMENT_MESSAGE.getMessage(), lottoTickets.size()));
-        print(lottoTickets.toMessage(Message.LOTTO_DELIMITER.getMessage(), Message.LOTTO_PREFIX.getMessage(), Message.LOTTO_SUFFIX.getMessage()));
+    public void printLottoTickets(int size, String message) {
+        print(String.format(Message.PAYMENT_MESSAGE.getMessage(), size));
+        print(message);
     }
 
     public void printStatistics(Map<Ranking, Integer> rankingAndCount, int rateOfReturn) {

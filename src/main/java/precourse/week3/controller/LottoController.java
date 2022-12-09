@@ -1,6 +1,5 @@
 package precourse.week3.controller;
 
-import precourse.week3.domain.LottoResults;
 import precourse.week3.domain.WinnerChecker;
 import precourse.week3.domain.lottomaker.LottoMaker;
 import precourse.week3.domain.lottomaker.LottoNumberGenerator;
@@ -8,7 +7,9 @@ import precourse.week3.domain.lottostore.LottoTicketsStore;
 import precourse.week3.domain.lottoticket.LottoTickets;
 import precourse.week3.domain.lottowinningnumber.LottoWinningNumbersMaker;
 import precourse.week3.domain.money.Money;
+import precourse.week3.domain.result.LottoResults;
 import precourse.week3.view.InputView;
+import precourse.week3.view.Message;
 import precourse.week3.view.OutputView;
 
 import java.util.List;
@@ -35,12 +36,17 @@ public class LottoController {
         Money money = new Money(inputView.readPayment());
         LottoTicketsStore lottoTicketsStore = new LottoTicketsStore(new LottoMaker(new LottoNumberGenerator()));
         LottoTickets lottoTickets = lottoTicketsStore.sellLottoTickets(money);
-        outputView.printLottoTickets(lottoTickets);
+        printLottoTickets(lottoTickets);
         List<Integer> numbers = inputView.readWinningNumbers();
         int number = inputView.readBonusNumber();
         LottoWinningNumbersMaker lottoWinningNumbersMaker = new LottoWinningNumbersMaker();
         WinnerChecker winnerChecker = new WinnerChecker(lottoWinningNumbersMaker.createLottoWinningNumbers(numbers, number));
         LottoResults lottoResults = winnerChecker.check(lottoTickets);
         outputView.printStatistics(lottoResults.countByRank(), lottoResults.calculateRateOfReturn(LottoTicketsStore.LOTTO_PRICE));
+    }
+
+    private void printLottoTickets(LottoTickets lottoTickets) {
+        String message = lottoTickets.toMessage(Message.LOTTO_DELIMITER.getMessage(), Message.LOTTO_PREFIX.getMessage(), Message.LOTTO_SUFFIX.getMessage());
+        outputView.printLottoTickets(lottoTickets.size(), message);
     }
 }
