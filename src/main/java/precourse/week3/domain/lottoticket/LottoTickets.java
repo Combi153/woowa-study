@@ -20,4 +20,14 @@ public class LottoTickets {
                 .map(lotto -> lotto.compare(lottoWinningNumbers))
                 .collect(Collectors.toList());
     }
+
+    public int size() {
+        return lottoTickets.size();
+    }
+
+    public String toMessage(String delimiter, String prefix, String suffix) {
+        return lottoTickets.stream()
+                .map(lotto -> lotto.toMessage(delimiter, prefix, suffix))
+                .collect(Collectors.joining());
+    }
 }
