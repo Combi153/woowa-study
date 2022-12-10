@@ -12,7 +12,7 @@ public enum Message {
     STATISTICS_TITLE_MESSAGE("당첨 통계\n---\n"),
     STATISTICS_NORMAL_CONTENT_MESSAGE("%d개 일치 (%s원) - %d개\n"),
     STATISTICS_BONUS_CONTENT_MESSAGE("%d개 일치, 보너스 볼 일치 (%s원) - %d개\n"),
-    RATE_OF_RETURN_MESSAGE("총 수익률은 %s입니다.\n");
+    RATE_OF_RETURN_MESSAGE("총 수익률은 %s%%입니다.\n");
 
     private final String message;
 

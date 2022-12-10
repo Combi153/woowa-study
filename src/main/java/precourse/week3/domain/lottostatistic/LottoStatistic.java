@@ -3,6 +3,8 @@ package precourse.week3.domain.lottostatistic;
 import precourse.week3.domain.lottostore.LottoTicketsStore;
 import precourse.week3.domain.ranking.Ranking;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -35,26 +37,42 @@ public class LottoStatistic {
         return ranking -> List.of(ranking.getRanking(), ranking.getNumberOfMatching(), ranking.getPrize(), rankingAndCount.get(ranking));
     }
 
-    public int calculateRateOfReturn() {
-        int lottoPrice = LottoTicketsStore.LOTTO_PRICE;
-        validatePrice(lottoPrice);
-        int totalReturn = calculateReturn();
-        return totalReturn / lottoPrice;
+    public String calculateRateOfReturn() {
+        BigDecimal lottoPrice = toBigDecimal(LottoTicketsStore.LOTTO_PRICE);
+        BigDecimal totalReturn = calculateReturn();
+        return divideAndRound(lottoPrice, totalReturn).toString();
     }
 
-    private void validatePrice(int price) {
+    private BigDecimal divideAndRound(BigDecimal divisor, BigDecimal dividend) {
+        validateDivisor(divisor.intValue());
+        return dividend.divide(divisor, 2, RoundingMode.HALF_UP);
+    }
+
+    private void validateDivisor(int price) {
         if (price == INITIAL_VALUE) {
             throw new ArithmeticException("[ERROR] 0으로 나눌 수 없습니다.");
         }
     }
 
-    private int calculateReturn() {
-        return rankingAndCount.keySet().stream()
-                .mapToInt(this::calculateEachReturn)
-                .sum();
+    private BigDecimal calculateReturn() {
+        BigDecimal totalReturn = BigDecimal.valueOf(0);
+        for (Ranking ranking : rankingAndCount.keySet()) {
+            totalReturn = totalReturn.add(calculateEachReturn(ranking));
+        }
+        return totalReturn;
     }
 
-    private int calculateEachReturn(Ranking ranking) {
-        return rankingAndCount.get(ranking) * ranking.getPrize();
+    private BigDecimal calculateEachReturn(Ranking ranking) {
+        return multiplyTwoNumberByBigDecimal(rankingAndCount.get(ranking), ranking.getPrize());
+    }
+
+    private BigDecimal multiplyTwoNumberByBigDecimal(int numberA, int numberB) {
+        BigDecimal bigNumberA = toBigDecimal(numberA);
+        BigDecimal bigNumberB = toBigDecimal(numberB);
+        return bigNumberA.multiply(bigNumberB);
+    }
+
+    private BigDecimal toBigDecimal(int integer) {
+        return BigDecimal.valueOf(integer);
     }
 }
