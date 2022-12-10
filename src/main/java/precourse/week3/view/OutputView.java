@@ -2,6 +2,7 @@ package precourse.week3.view;
 
 import precourse.week3.domain.lottostatistic.LottoStatistic;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class OutputView {
@@ -28,9 +29,14 @@ public class OutputView {
     private String makeStatisticsMessageBy(List<Integer> statistic) {
         int ranking = statistic.get(0);
         int numberOfMatching = statistic.get(1);
-        int prize = statistic.get(2);
+        String prize = formatPrize(statistic.get(2));
         int count = statistic.get(3);
         return String.format(getStatisticsMessageBy(ranking), numberOfMatching, prize, count);
+    }
+
+    private String formatPrize(int prize) {
+        DecimalFormat decimalFormat = new DecimalFormat("###.###");
+        return decimalFormat.format(prize);
     }
 
     private static String getStatisticsMessageBy(int ranking) {
