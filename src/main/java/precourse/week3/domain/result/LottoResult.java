@@ -1,4 +1,4 @@
-package precourse.week3.domain;
+package precourse.week3.domain.result;
 
 import java.util.Objects;
 

@@ -1,4 +1,6 @@
-package precourse.week3.domain;
+package precourse.week3.domain.ranking;
+
+import precourse.week3.domain.result.LottoResult;
 
 public enum Ranking {
 

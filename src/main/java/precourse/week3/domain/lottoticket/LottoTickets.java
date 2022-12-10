@@ -1,8 +1,8 @@
 package precourse.week3.domain.lottoticket;
 
-import precourse.week3.domain.LottoResult;
 import precourse.week3.domain.lotto.Lotto;
 import precourse.week3.domain.lottowinningnumber.LottoWinningNumbers;
+import precourse.week3.domain.result.LottoResult;
 
 import java.util.List;
 import java.util.stream.Collectors;

@@ -1,4 +1,4 @@
-package precourse.week3.domain.winningnumber;
+package precourse.week3.domain.lottonumber;
 
 import precourse.week3.domain.lottomaker.LottoNumberGenerator;
 
@@ -39,10 +39,6 @@ public class LottoNumber {
     @Override
     public int hashCode() {
         return Objects.hash(lottoNumber);
-    }
-
-    public String toMessage() {
-        return String.valueOf(lottoNumber);
     }
 
     public boolean isContained(List<Integer> numbers) {

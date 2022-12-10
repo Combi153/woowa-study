@@ -1,7 +1,7 @@
 package precourse.week3.domain.lottowinningnumber;
 
-import precourse.week3.domain.LottoResult;
-import precourse.week3.domain.winningnumber.LottoNumber;
+import precourse.week3.domain.lottonumber.LottoNumber;
+import precourse.week3.domain.result.LottoResult;
 
 import java.util.List;
 
