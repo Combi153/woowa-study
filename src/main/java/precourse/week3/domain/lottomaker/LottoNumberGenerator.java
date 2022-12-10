@@ -2,6 +2,7 @@ package precourse.week3.domain.lottomaker;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -18,7 +19,8 @@ public class LottoNumberGenerator implements RandomNumberGenerator {
     }
 
     private List<Integer> sort(List<Integer> numbers) {
-        Collections.sort(numbers);
-        return numbers;
+        List<Integer> newNumbers = new ArrayList<>(numbers);
+        Collections.sort(newNumbers);
+        return newNumbers;
     }
 }
