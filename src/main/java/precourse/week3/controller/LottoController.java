@@ -1,13 +1,14 @@
 package precourse.week3.controller;
 
-import precourse.week3.domain.WinnerChecker;
 import precourse.week3.domain.lottomaker.LottoMaker;
 import precourse.week3.domain.lottomaker.LottoNumberGenerator;
+import precourse.week3.domain.lottostatistic.LottoStatistic;
 import precourse.week3.domain.lottostore.LottoTicketsStore;
 import precourse.week3.domain.lottoticket.LottoTickets;
 import precourse.week3.domain.lottowinningnumber.LottoWinningNumbersMaker;
 import precourse.week3.domain.money.Money;
 import precourse.week3.domain.result.LottoResults;
+import precourse.week3.domain.winnerchecker.WinnerChecker;
 import precourse.week3.view.InputView;
 import precourse.week3.view.Message;
 import precourse.week3.view.OutputView;
@@ -42,7 +43,12 @@ public class LottoController {
         LottoWinningNumbersMaker lottoWinningNumbersMaker = new LottoWinningNumbersMaker();
         WinnerChecker winnerChecker = new WinnerChecker(lottoWinningNumbersMaker.createLottoWinningNumbers(numbers, number));
         LottoResults lottoResults = winnerChecker.check(lottoTickets);
-        outputView.printStatistics(lottoResults.countByRank(), lottoResults.calculateRateOfReturn(LottoTicketsStore.LOTTO_PRICE));
+        printStatistics(lottoResults);
+    }
+
+    private void printStatistics(LottoResults lottoResults) {
+        LottoStatistic statistic = lottoResults.createLottoStatistic();
+        outputView.printStatistics(statistic);
     }
 
     private void printLottoTickets(LottoTickets lottoTickets) {
