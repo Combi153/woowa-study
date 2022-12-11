@@ -35,7 +35,7 @@ public class OutputView {
     }
 
     private String formatPrize(int prize) {
-        DecimalFormat decimalFormat = new DecimalFormat("###.###");
+        DecimalFormat decimalFormat = new DecimalFormat("###,###");
         return decimalFormat.format(prize);
     }
 
