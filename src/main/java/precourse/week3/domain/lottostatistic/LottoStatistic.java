@@ -1,6 +1,5 @@
 package precourse.week3.domain.lottostatistic;
 
-import precourse.week3.domain.lottostore.LottoTicketsStore;
 import precourse.week3.domain.ranking.Ranking;
 
 import java.math.BigDecimal;
@@ -14,10 +13,13 @@ import java.util.stream.Collectors;
 public class LottoStatistic {
 
     private static final int INITIAL_VALUE = 0;
+    private static final int FIRST_DECIMAL_PLACE = 1;
     private final Map<Ranking, Integer> rankingAndCount;
+    private final int totalPurchase;
 
-    public LottoStatistic(Map<Ranking, Integer> rankingAndCount) {
+    public LottoStatistic(Map<Ranking, Integer> rankingAndCount, int totalPurchase) {
         this.rankingAndCount = rankingAndCount;
+        this.totalPurchase = totalPurchase;
     }
 
     public List<List<Integer>> getStatisticsByDescendingRank() {
@@ -38,14 +40,14 @@ public class LottoStatistic {
     }
 
     public String calculateRateOfReturn() {
-        BigDecimal lottoPrice = toBigDecimal(LottoTicketsStore.LOTTO_PRICE);
-        BigDecimal totalReturn = calculateReturn();
-        return divideAndRound(lottoPrice, totalReturn).toString();
+        BigDecimal lottoPurchase = toBigDecimal(totalPurchase);
+        BigDecimal totalReturn = calculateReturn().multiply(toBigDecimal(100));
+        return divideAndRoundHalfUpToSecondPlace(lottoPurchase, totalReturn).toString();
     }
 
-    private BigDecimal divideAndRound(BigDecimal divisor, BigDecimal dividend) {
+    private BigDecimal divideAndRoundHalfUpToSecondPlace(BigDecimal divisor, BigDecimal dividend) {
         validateDivisor(divisor.intValue());
-        return dividend.divide(divisor, 2, RoundingMode.HALF_UP);
+        return dividend.divide(divisor, FIRST_DECIMAL_PLACE, RoundingMode.HALF_UP);
     }
 
     private void validateDivisor(int price) {
@@ -55,7 +57,7 @@ public class LottoStatistic {
     }
 
     private BigDecimal calculateReturn() {
-        BigDecimal totalReturn = BigDecimal.valueOf(0);
+        BigDecimal totalReturn = BigDecimal.valueOf(INITIAL_VALUE);
         for (Ranking ranking : rankingAndCount.keySet()) {
             totalReturn = totalReturn.add(calculateEachReturn(ranking));
         }

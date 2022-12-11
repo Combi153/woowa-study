@@ -1,6 +1,7 @@
 package precourse.week3.domain.result;
 
 import precourse.week3.domain.lottostatistic.LottoStatistic;
+import precourse.week3.domain.lottostore.LottoTicketsStore;
 import precourse.week3.domain.ranking.Ranking;
 
 import java.util.Collections;
@@ -18,7 +19,8 @@ public class LottoResults {
 
     public LottoStatistic createLottoStatistic() {
         Map<Ranking, Integer> counts = countByRank();
-        return new LottoStatistic(counts);
+        int totalPurchase = calculateTotalPurchase();
+        return new LottoStatistic(counts, totalPurchase);
     }
 
     private Map<Ranking, Integer> countByRank() {
@@ -27,6 +29,10 @@ public class LottoResults {
             counts.put(ranking, countFrequency(ranking));
         }
         return counts;
+    }
+
+    private int calculateTotalPurchase() {
+        return results.size() * LottoTicketsStore.LOTTO_PRICE;
     }
 
     private int countFrequency(Ranking ranking) {
