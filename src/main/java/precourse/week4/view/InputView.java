@@ -1,5 +1,7 @@
 package precourse.week4.view;
 
+import camp.nextstep.edu.missionutils.Console;
+
 /**
  * 사용자로부터 입력을 받는 역할을 한다.
  */
@@ -9,7 +11,9 @@ public class InputView {
      * 다리의 길이를 입력받는다.
      */
     public int readBridgeSize() {
-        return 0;
+        print(Message.BRIDGE_SIZE_INPUT_GUIDE.getMessage());
+        String input = readUsing(Validation.BRIDGE_SIZE_FORM);
+        return toInt(input);
     }
 
     /**
@@ -24,5 +28,31 @@ public class InputView {
      */
     public String readGameCommand() {
         return null;
+    }
+
+    private String readUsing(Validation validation) {
+        while (true) {
+            try {
+                String input = Console.readLine();
+                validateBy(input, Validation.BRIDGE_SIZE_FORM);
+                return input;
+            } catch (IllegalArgumentException e) {
+                print(e.getMessage());
+            }
+        }
+    }
+
+    private void validateBy(String input, Validation validation) {
+        if (!validation.isValidFormat(input)) {
+            throw new IllegalArgumentException(validation.getErrorMessage());
+        }
+    }
+
+    private int toInt(String input) {
+        return Integer.parseInt(input);
+    }
+
+    private void print(String message) {
+        System.out.print(message);
     }
 }
