@@ -35,7 +35,7 @@ public class InputView {
         while (true) {
             try {
                 String input = Console.readLine();
-                validateBy(input, Validation.BRIDGE_SIZE_FORM);
+                validateBy(input, validation);
                 return input;
             } catch (IllegalArgumentException e) {
                 print(e.getMessage());
