@@ -1,5 +1,6 @@
 package precourse.week4.view;
 
+import precourse.week4.domain.GameResult;
 import precourse.week4.domain.Trace;
 
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ public class OutputView {
 
     private String makeBridgeMessage(List<String> directions) {
         String bridgeContent = String.join(Message.BRIDGE_DELIMITER.getMessage(), directions);
-        return String.format(Message.BRIDGE_EDGE.getMessage(), bridgeContent);
+        return format(Message.BRIDGE_EDGE, bridgeContent);
     }
 
     private void makeDirections(List<String> upperDirections, List<String> lowerDirections, Trace trace) {
@@ -63,9 +64,22 @@ public class OutputView {
      * <p>
      * 출력을 위해 필요한 메서드의 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
-    public void printResult(List<String> directions, boolean isSuccess) {
+    public void printResult(GameResult result) {
         print(Message.GAME_RESULT.getMessage());
+        printMap(result.getTraces());
+        print(format(Message.SUCCESS_RESULT, makeSuccessMessage(result)));
+        print(format(Message.NUMBER_OF_ATTEMPTS, result.getNumberOfAttempts()));
+    }
 
+    private String makeSuccessMessage(GameResult result) {
+        if (result.isSuccess()) {
+            return Message.SUCCESS.getMessage();
+        }
+        return Message.FAIL.getMessage();
+    }
+
+    private static String format(Message message, Object factor) {
+        return String.format(message.getMessage(), factor);
     }
 
     public void printErrorMessage(String message) {
