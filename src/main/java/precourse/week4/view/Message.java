@@ -10,7 +10,12 @@ public enum Message {
     SUCCESS_RESULT("게임 성공 여부: "),
     NUMBER_OF_ATTEMPTS("총 시도한 횟수: "),
     SUCCESS("성공\n"),
-    FAIL("실패\n");
+    FAIL("실패\n"),
+    CORRECT_DIRECTION("O"),
+    INCORRECT_DIRECTION("X"),
+    NOTHING(" "),
+    BRIDGE_EDGE("[ %s ]\n"),
+    BRIDGE_DELIMITER(" | ");
 
     private final String message;
 
