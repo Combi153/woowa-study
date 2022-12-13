@@ -33,11 +33,25 @@ public class Pedestrian {
         return !direction.matches(directionFormat);
     }
 
+    public void clearTraces() {
+        traces.clear();
+    }
+
     public int updateNumberOfAttempts() {
         return ++numberOfAttempts;
     }
 
     public boolean isEndOfBridge() {
-        return bridge.isEqualSize(traces.size());
+        return bridge.isEqualSize(traces.size()) && !hasIncorrectDirection();
+    }
+
+    public boolean isStop() {
+        return hasIncorrectDirection();
+    }
+
+    private boolean hasIncorrectDirection() {
+        return traces.size() != traces.stream()
+                .filter(Trace::isCorrectDirection)
+                .count();
     }
 }
