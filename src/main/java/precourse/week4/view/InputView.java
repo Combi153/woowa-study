@@ -20,7 +20,8 @@ public class InputView {
      * 사용자가 이동할 칸을 입력받는다.
      */
     public String readMoving() {
-        return null;
+        print(Message.MOVE_GUIDE.getMessage());
+        return readUsing(Validation.MOVING_COMMAND_FORM);
     }
 
     /**
@@ -43,7 +44,7 @@ public class InputView {
     }
 
     private void validateBy(String input, Validation validation) {
-        if (!validation.isValidFormat(input)) {
+        if (validation.isInvalidFormat(input)) {
             throw new IllegalArgumentException(validation.getErrorMessage());
         }
     }
