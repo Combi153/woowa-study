@@ -37,8 +37,8 @@ public class Pedestrian {
         traces.clear();
     }
 
-    public int updateNumberOfAttempts() {
-        return ++numberOfAttempts;
+    public void updateNumberOfAttempts() {
+        ++numberOfAttempts;
     }
 
     public boolean isEndOfBridge() {
@@ -53,5 +53,9 @@ public class Pedestrian {
         return traces.size() != traces.stream()
                 .filter(Trace::isCorrectDirection)
                 .count();
+    }
+
+    public GameResult createMovingResult() {
+        return new GameResult(traces, isEndOfBridge(), numberOfAttempts);
     }
 }

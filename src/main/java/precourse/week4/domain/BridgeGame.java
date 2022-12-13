@@ -31,6 +31,7 @@ public class BridgeGame {
         validate(command);
         if (command.equals("R")) {
             pedestrian.clearTraces();
+            pedestrian.updateNumberOfAttempts();
         }
     }
 
@@ -46,5 +47,9 @@ public class BridgeGame {
 
     public boolean isEnd() {
         return pedestrian.isStop();
+    }
+
+    public GameResult getGameResult() {
+        return pedestrian.createMovingResult();
     }
 }
