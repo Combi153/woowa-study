@@ -41,11 +41,11 @@ public class Pedestrian {
         ++numberOfAttempts;
     }
 
-    public boolean isEndOfBridge() {
+    public boolean isAtTheEndOfBridge() {
         return bridge.isEqualSize(traces.size()) && !hasIncorrectDirection();
     }
 
-    public boolean isStop() {
+    public boolean isStopped() {
         return hasIncorrectDirection();
     }
 
@@ -56,6 +56,10 @@ public class Pedestrian {
     }
 
     public GameResult createMovingResult() {
-        return new GameResult(traces, isEndOfBridge(), numberOfAttempts);
+        return new GameResult(traces, isAtTheEndOfBridge(), numberOfAttempts);
+    }
+
+    public boolean isAtTheStartOfBridge() {
+        return traces.size() == 0;
     }
 }

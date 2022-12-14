@@ -7,6 +7,7 @@ import java.util.List;
  */
 public class BridgeGame {
 
+    private static final String RESTART_COMMAND = "R";
     private final Pedestrian pedestrian;
 
     public BridgeGame(Pedestrian pedestrian) {
@@ -29,7 +30,7 @@ public class BridgeGame {
      */
     public void retry(String command) {
         validate(command);
-        if (command.equals("R")) {
+        if (command.equals(RESTART_COMMAND)) {
             pedestrian.clearTraces();
             pedestrian.updateNumberOfAttempts();
         }
@@ -41,12 +42,16 @@ public class BridgeGame {
         }
     }
 
-    public boolean isClear() {
-        return pedestrian.isEndOfBridge();
+    public boolean isCompleted() {
+        return pedestrian.isAtTheEndOfBridge();
     }
 
-    public boolean isEnd() {
-        return pedestrian.isStop();
+    public boolean isPlaying() {
+        return pedestrian.isAtTheStartOfBridge() || !pedestrian.isStopped();
+    }
+
+    public boolean isOver() {
+        return pedestrian.isStopped();
     }
 
     public GameResult getGameResult() {
